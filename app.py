@@ -16,10 +16,10 @@ Come funziona la regressione lineare?
 ''')
 
 
-a = 0.1*np.random.random(1000)
-b = -0.1*np.random.random(1000)
+#a = 0.1*np.random.random(1000)
+#b = -0.1*np.random.random(1000)
 X1  = np.linspace(0,20,1000)
-Y = np.cos(X1)*np.exp(-0.2*X1) +a + b
+#Y = np.cos(X1)*np.exp(-0.2*X1) +a + b
 
 #data = {
 #    "x": X1, 
@@ -27,6 +27,9 @@ Y = np.cos(X1)*np.exp(-0.2*X1) +a + b
 #}
 #df = pd.DataFrame(data)
 df = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vS0qs6nT7qbHVMlxb596iF3qynx8foUEkQWK-1EiEL6NrTxZzvwr6OyV2cvTy5YcQ/pub?output=csv")
+X1 = df["x"].values
+Y = df["y"].values
+
 
 #save = st.button("Save")
 #if save:
