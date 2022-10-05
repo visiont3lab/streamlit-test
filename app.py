@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import plotly.graph_objects as go 
-
+import pandas as pd
 
 st.title("Dashboard Regressione lineare")
 st.write(r'''
@@ -20,8 +20,21 @@ a = 0.1*np.random.random(1000)
 b = -0.1*np.random.random(1000)
 X1  = np.linspace(0,20,1000)
 Y = np.cos(X1)*np.exp(-0.2*X1) +a + b
-Y = Y.reshape(-1,1)
 
+#data = {
+#    "x": X1, 
+#    "y": Y
+#}
+#df = pd.DataFrame(data)
+df = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vS0qs6nT7qbHVMlxb596iF3qynx8foUEkQWK-1EiEL6NrTxZzvwr6OyV2cvTy5YcQ/pub?output=csv")
+
+#save = st.button("Save")
+#if save:
+#    df.to_excel("dataset.xlsx", index=False)
+
+st.dataframe(df)
+
+Y = Y.reshape(-1,1)
 fig_original_data = go.Figure()
 fig_original_data.add_traces( go.Scatter( x=X1,y=Y[:,0], mode="markers", name="res" ))
 st.plotly_chart(fig_original_data, use_container_width=True)
